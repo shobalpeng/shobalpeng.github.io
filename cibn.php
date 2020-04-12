@@ -1,0 +1,74 @@
+<?php
+$id=$_GET["id"];
+$url=file_get_contents("http://api.epg2.cibn.cc/v1/loopChannelList?epgId=1000");
+header("Content-Type: application/json;charset=UTF-8");
+$arr = json_decode($url,true);
+for($x=0;$x<55;$x++)//这里目前只有55个，如有增加可改这里
+	{
+		if($id==$arr['data']['channelList'][$x]['code'])
+		{
+			header('location:'.$arr['data']['channelList'][$x]['m3u8']);
+			break;
+		}
+		//echo($arr['data']['channelList'][$x]['channelName']);
+		//echo(',');
+		//echo($arr['data']['channelList'][$x]['code']);
+		//echo "\r\n";
+		
+	}
+/*JingPin->精品影院
+YouXi->生活
+YinYue->军事
+LuShi->真人秀
+JiaoYu->怡家
+MeiZhuang->文旅中国
+64->今日推荐
+LvYou->嗨播
+DongLinFaYin->时尚生活
+ReBo->童学世界
+DOTA2->经典剧场
+DuShi->风尚运动
+QiChe->汽车
+65->快乐购物
+TiYu->映画
+338->MV
+QingGan->情感影院
+JingDian->骄阳剧场
+JianKang->健康
+155->流行榜单
+300->底价秒杀
+115->全电竞
+TongBu->喜剧影院
+DongMan->炫佳动漫
+WeiDianYing->微电影
+135->巨星演唱会
+301->家装精选
+302->美食厨房
+400->热卖推荐
+DanJi->院线大片
+1->品质生活
+ZongYi->古装剧场
+162->经典音乐
+QinZi->动漫剧场
+ZongHe->好莱坞
+jiayougouwu->家居用品
+chanwenhua->朵丫乐园
+208->女团专场
+126->斗牛财经
+Shoucang->流金岁月
+136->老陈坐弹会
+178->好物
+YingXiong->艺术院线
+145->音乐综艺
+78->精选古典乐
+128->经典音乐会
+FengShang->新知
+DianYing->电影综合
+7->中国交通
+JiLuPian->纪录片
+8->环球奇观
+501->收藏
+68->莎翁戏剧
+DianJing->综合
+ShengHuo->动作影院*/
+?>
